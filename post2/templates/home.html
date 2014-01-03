@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Who Am I - Home</title>
+</head>
+<body>
+    <h1>Hello Number {{ session.user_id }}</h1>
+    <h3>Your Window:</h3>
+    <table border="1">
+        <tr>
+            <td>
+                <p>Common Knowledge - What you and your friends know about you</p>
+                {% for i in window.open %}
+                {{ i.adj }}({{ i.count }})&nbsp;
+                {% endfor %}
+            </td>
+            <td>
+                <p>Blind - What your friends know about you that you don't</p>
+                {% for i in window.blind %}
+                {{ i.adj }}({{ i.count }})&nbsp;
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Hidden - What your friends don't know about you</p>
+                {% for i in window.hidden %}
+                {{ i.adj }}({{ i.count }})&nbsp;
+                {% endfor %}
+            </td>
+            <td>
+                <p>Unknown - What else you've got there, ha?</p>
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    <h3>Other Actions:</h3>
+    <ul>
+        <li><a href="{{ url_for('self_test') }}">Self test</a></li>
+        <li><a href="{{ url_for('friend_test') }}">Friend test</a></li>
+        <li><a href="{{ url_for('logout') }}">Log out</a></li>
+    </ul>
+</body>
+</html>

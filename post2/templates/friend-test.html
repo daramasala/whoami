@@ -1,0 +1,12 @@
+{% extends "self-test.html" %}
+{% block header %}Friend Test{% endblock %}
+{% block users %}
+    {{ super() }}
+    <label for="subject_id">Subject</label>
+    <select id="subject_id" name="subject_id">
+        {% for id in friend_ids if not id == session.user_id %}
+            <option value="{{ id }}">{{ id }}</option>
+        {% endfor %}
+    </select>
+    <br>
+{% endblock %}
