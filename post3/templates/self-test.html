@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Who Am I</title>
+</head>
+<body>
+    <h1>{% block header %}Self Test{% endblock %}</h1>
+    <p>
+        Please select the adjectives that best describe you:
+    </p>
+    <form action='{{ action }}' method='POST'>
+        {% block users %}
+        Submitter Id: {{ session.user_id }}
+        <br>
+        {% endblock %}
+        {% for adj in adjectives %}
+        <input id="a_{{ adj }}" name="a_{{ adj }}" type="checkbox" {{ "checked" if adj in selected }}/>
+        <label for="a_{{ adj }}">{{ adj }}</label>
+        <br>
+        {% endfor %}
+        <p>
+            <input type="submit"/>
+        </p>
+    </form>
+</body>
+</html>
